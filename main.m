@@ -36,7 +36,7 @@ params.sigma =  ones(L,1)*sigma_init; %sigma squared
 params.history = zeros(alg_params.L,alg_params.L);
 
 
-for i=1:M % iterate throgh people
+for i=1:M % iterate through people
     
     pairs = get_pairs(alg_params.N,params);
     %% You can use this code to sample random N pairs
