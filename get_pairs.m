@@ -1,6 +1,5 @@
 function [ pairs ] = get_pairs(N,params)
     
-    
     addpath('Heap/');
     
     % divs = zeros(N,N);
@@ -28,9 +27,9 @@ function [ pairs ] = get_pairs(N,params)
                 new_params = get_updated_parameters(a,b,[params.history(a,b),params.history(b,a)],params);
                 
 %                 div_a_ab=   KLGauss(params.mu(a),new_params.mu_a,params.sigma(a),new_params.sigma_a);
-                           div_a_ab = 0  + KLGauss(new_params.mu_a,params.mu(a),new_params.sigma_a,params.sigma(a));
+                div_a_ab = 0  + KLGauss(new_params.mu_a,params.mu(a),new_params.sigma_a,params.sigma(a));
                 
-                                div_b_ab = KLGauss(new_params.mu_b,params.mu(b),new_params.sigma_b,params.sigma(b));
+                div_b_ab = KLGauss(new_params.mu_b,params.mu(b),new_params.sigma_b,params.sigma(b));
 %                div_b_ab =0 + KLGauss(params.mu(b),new_params.mu_b,params.sigma(b),new_params.sigma_b);
                 div_k_ab = 0;
                 pr_ab = new_params.pr;
@@ -41,12 +40,12 @@ function [ pairs ] = get_pairs(N,params)
 %                 div_a_ba=   KLGauss(params.mu(a),new_params.mu_a,params.sigma(a),new_params.sigma_a);
                 div_a_ba = 0  + KLGauss(new_params.mu_a,params.mu(b),new_params.sigma_a,params.sigma(b));
                 
-                         div_b_ba = KLGauss(new_params.mu_b,params.mu(a),new_params.sigma_b,params.sigma(a));
+                div_b_ba = KLGauss(new_params.mu_b,params.mu(a),new_params.sigma_b,params.sigma(a));
 %                 div_b_ba =0+ KLGauss(params.mu(b),new_params.mu_b,params.sigma(b),new_params.sigma_b);
                 div_k_ba = 0;
                 pr_ba = new_params.pr;
                 
-                
+                %Eq.9 expected information gain
                 div =pr_ab*(div_a_ab+div_b_ab+div_k_ab) + pr_ba*(div_a_ba+div_b_ba+div_k_ba);
                                           
                 

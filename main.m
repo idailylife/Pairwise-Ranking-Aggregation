@@ -91,7 +91,7 @@ for i=1:M % iterate through people
         end
     end
     
-    [~,ix] = sort(params.mu);
+    [~,ix] = sort(params.mu); %Rank objects by sorting the obtained {mu_i}
     Q(end+1)=sum(abs(ix'-ixXt));
     disp(['Current Error: ',num2str(Q(end))]);
     

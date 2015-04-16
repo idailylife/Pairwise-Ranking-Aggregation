@@ -1,5 +1,5 @@
 function pref = get_preference(Xt, a,b,alg_params )
-    
+ %Query the annotator k on the preference between obj_a and obj_b
     val_at_a = Xt(a);
     val_at_b = Xt(b);
     
